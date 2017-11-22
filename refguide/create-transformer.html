@@ -1,0 +1,966 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>createTransformer · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="expr.html" />
+    
+    
+    <link rel="prev" href="extending.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../MobX.html">
+            
+                <a href="../MobX.html">
+            
+                    
+                    MobX
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    介绍
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../intro/overview.html">
+            
+                <a href="../intro/overview.html">
+            
+                    
+                    MobX 要点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../intro/concepts.html">
+            
+                <a href="../intro/concepts.html">
+            
+                    
+                    概念 & 原则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="api.html">
+            
+                <a href="api.html">
+            
+                    
+                    API 概述
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="observable.html">
+            
+                <a href="observable.html">
+            
+                    
+                    observable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="observable-decorator.html">
+            
+                <a href="observable-decorator.html">
+            
+                    
+                    @observable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="computed-decorator.html">
+            
+                <a href="computed-decorator.html">
+            
+                    
+                    (@)computed
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="autorun.html">
+            
+                <a href="autorun.html">
+            
+                    
+                    autorun
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="observer-component.html">
+            
+                <a href="observer-component.html">
+            
+                    
+                    (@)observer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="action.html">
+            
+                <a href="action.html">
+            
+                    
+                    action
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Observable 类型
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="object.html">
+            
+                <a href="object.html">
+            
+                    
+                    对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="array.html">
+            
+                <a href="array.html">
+            
+                    
+                    数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="map.html">
+            
+                <a href="map.html">
+            
+                    
+                    maps
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="boxed.html">
+            
+                <a href="boxed.html">
+            
+                    
+                    boxed values
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../best/react.html">
+            
+                <a href="../best/react.html">
+            
+                    
+                    理解MobX是如何响应的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../best/decorators.html">
+            
+                <a href="../best/decorators.html">
+            
+                    
+                    如何（不）使用装饰符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../资料.html">
+            
+                <a href="../资料.html">
+            
+                    
+                    资料
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../faq/blogs.html">
+            
+                <a href="../faq/blogs.html">
+            
+                    
+                    教程，视频和博客
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../faq/related.html">
+            
+                <a href="../faq/related.html">
+            
+                    
+                    相关项目
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../faq/examples.html">
+            
+                <a href="../faq/examples.html">
+            
+                    
+                    示例项目
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../faq/boilerplates.html">
+            
+                <a href="../faq/boilerplates.html">
+            
+                    
+                    样板
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../faq/faq.html">
+            
+                <a href="../faq/faq.html">
+            
+                    
+                    常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../注意点--技巧.html">
+            
+                <a href="../注意点--技巧.html">
+            
+                    
+                    注意点 & 技巧
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../best/pitfalls.html">
+            
+                <a href="../best/pitfalls.html">
+            
+                    
+                    常见问题 & 最佳事件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../best/store.html">
+            
+                <a href="../best/store.html">
+            
+                    
+                    定义 stores
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../best/actions.html">
+            
+                <a href="../best/actions.html">
+            
+                    
+                    创建（异步）actions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../best/react-performance.html">
+            
+                <a href="../best/react-performance.html">
+            
+                    
+                    优化 React 组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../best/devtools.html">
+            
+                <a href="../best/devtools.html">
+            
+                    
+                    开发者工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="../best/syntax.html">
+            
+                <a href="../best/syntax.html">
+            
+                    
+                    ES5 \/ ES6 \/ TypeScript 语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="../best/stateless-HMR.html">
+            
+                <a href="../best/stateless-HMR.html">
+            
+                    
+                    无状态组件和热加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    实用方法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="autorun-async.html">
+            
+                <a href="autorun-async.html">
+            
+                    
+                    autorunAsync
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="extending.html">
+            
+                <a href="extending.html">
+            
+                    
+                    Atom & Reaction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10.3" data-path="create-transformer.html">
+            
+                <a href="create-transformer.html">
+            
+                    
+                    createTransformer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="expr.html">
+            
+                <a href="expr.html">
+            
+                    
+                    expr
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="extend-observable.html">
+            
+                <a href="extend-observable.html">
+            
+                    
+                    extendObservable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="is-observable.html">
+            
+                <a href="is-observable.html">
+            
+                    
+                    isObservable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="modifiers.html">
+            
+                <a href="modifiers.html">
+            
+                    
+                    modifiers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="observe.html">
+            
+                <a href="observe.html">
+            
+                    
+                    intercept & observe
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="reaction.html">
+            
+                <a href="reaction.html">
+            
+                    
+                    reaction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="spy.html">
+            
+                <a href="spy.html">
+            
+                    
+                    spy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="tojson.html">
+            
+                <a href="tojson.html">
+            
+                    
+                    toJS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.12" data-path="transaction.html">
+            
+                <a href="transaction.html">
+            
+                    
+                    transaction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.13" data-path="untracked.html">
+            
+                <a href="untracked.html">
+            
+                    
+                    untracked
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.14" data-path="when.html">
+            
+                <a href="when.html">
+            
+                    
+                    when
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >createTransformer</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="createtransformer">createTransformer</h1>
+<p><code>createTransformer&lt;A, B&gt;(transformation: (value: A) =&gt; B, onCleanup?: (result: B, value?: A) =&gt; void): (value: A) =&gt; B</code></p>
+<p><code>createTransformer</code> turns a function (that should transform one value into another value) into a reactive and memoizing function.
+In other words, if the <code>transformation</code> function computes B given a specific A, the same B will be returned for all other future invocations of the transformation with the same A.
+However, if A changes, the transformation will be re-applied so that B is updated accordingly.
+And last but not least, if nobody is using the transformation of a specific A anymore, it&apos;s entry will be removed from the memoization table.</p>
+<p>With <code>createTransformer</code> it is very easy to transform a complete data graph into another data graph.
+Transformation functions can be composed so that you can build a tree using lots of small transformations.
+The resulting data graph will never be stale, it will be kept in sync with the source by applying small patches to the result graph.
+This makes it very easy to achieve powerful patterns similar to sideways data loading, map-reduce, tracking state history using immutable data structures etc.</p>
+<p>The optional <code>onCleanup</code> function can be used to get a notification when a transformation of an object is no longer needed.
+This can be used to dispose resources attached to the result object if needed.</p>
+<p>Always use transformations inside a reaction like <code>@observer</code> or <code>autorun</code>.
+Transformations will, like any other computed value, fall back to lazy evaluation if not observed by something, which sort of defeats their purpose.</p>
+<p>This all might still be a bit vague, so here are two examples that explain this whole idea of transforming one data structure into another by using small, reactive functions:</p>
+<h2 id="tracking-mutable-state-using-immutable-shared-data-structures">Tracking mutable state using immutable, shared data structures.</h2>
+<p>This example is taken from the <a href="https://github.com/mobxjs/mobx-reactive2015-demo" target="_blank">Reactive2015 conference demo</a>:</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/*
+    The store that holds our domain: boxes and arrows
+*/</span>
+<span class="hljs-keyword">const</span> store = observable({
+    boxes: [],
+    arrows: [],
+    selection: <span class="hljs-literal">null</span>
+});
+
+<span class="hljs-comment">/**
+    Serialize store to json upon each change and push it onto the states list
+*/</span>
+<span class="hljs-keyword">const</span> states = [];
+
+autorun(() =&gt; {
+    states.push(serializeState(store));
+});
+
+<span class="hljs-keyword">const</span> serializeState = createTransformer(store =&gt; ({
+    boxes: store.boxes.map(serializeBox),
+    arrows: store.arrows.map(serializeArrow),
+    selection: store.selection ? store.selection.id : <span class="hljs-literal">null</span>
+}));
+
+<span class="hljs-keyword">const</span> serializeBox = createTransformer(box =&gt; ({...box}));
+
+<span class="hljs-keyword">const</span> serializeArrow = createTransformer(arrow =&gt; ({
+    id: arrow.id,
+    to: arrow.to.id,
+    <span class="hljs-keyword">from</span>: arrow.from.id
+}));
+</code></pre>
+<p>In this example the state is serialized by composing three different transformation functions.
+The autorunner triggers the serialization of the <code>store</code> object, which in turn serializes all boxes and arrows.
+Let&apos;s take closer look at the life of an imaginary example box#3.</p>
+<ol>
+<li>The first time box#3 is passed by <code>map</code> to <code>serializeBox</code>,
+the serializeBox transformation is executed and an entry containing box#3 and its serialized representation is added to the internal memoization table of <code>serializeBox</code>.</li>
+<li>Imagine that another box is added to the <code>store.boxes</code> list.
+This would cause the <code>serializeState</code> function to re-compute, resulting in a complete remapping of all the boxes.
+However, all the invocations of <code>serializeBox</code> will now return their old values from the memoization tables since their transformation functions didn&apos;t (need to) run again.</li>
+<li>Secondly, if somebody changes a property of box#3 this will cause the application of the <code>serializeBox</code> to box#3 to re-compute, just like any other reactive function in MobX.
+Since the transformation will now produce a new Json object based on box#3, all observers of that specific transformation will be forced to run again as well.
+That&apos;s the <code>serializeState</code> transformation in this case.
+<code>serializeState</code> will now produce a new value in turn and map all the boxes again. But except for box#3, all other boxes will be returned from the memoization table.</li>
+<li>Finally, if box#3 is removed from <code>store.boxes</code>, <code>serializeState</code> will compute again.
+But since it will no longer be using the application of <code>serializeBox</code> to box#3,
+that reactive function will go back to non-reactive mode.
+This signals the memoization table that the entry can be removed so that it is ready for GC.</li>
+</ol>
+<p>So effectively we have achieved state tracking using immutable, shared datas structures here.
+All boxes and arrows are mapped and reduced into single state tree.
+Each change will result in a new entry in the <code>states</code> array, but the different entries will share almost all of their box and arrow representations.</p>
+<h2 id="transforming-a-datagraph-into-another-reactive-data-graph">Transforming a datagraph into another reactive data graph</h2>
+<p>Instead of returning plain values from a transformation function, it is also possible to return observable objects.
+This can be used to transform an observable data graph into a another observable data graph, which can be used to transform... you get the idea.</p>
+<p>Here is a small example that encodes a reactive file explorer that will update its representation upon each change.
+Data graphs that are built this way will in general react a lot faster and will consist of much more straight-forward code,
+compared to derived data graph that are updated using your own code. See the <a href="https://github.com/mobxjs/mobx/blob/3ea1f4af20a51a1cb30be3e4a55ec8f964a8c495/test/perf/transform-perf.js#L4" target="_blank">performance tests</a> for some examples.</p>
+<p>Unlike the previous example, the <code>transformFolder</code> will only run once as long as a folder remains visible;
+the <code>DisplayFolder</code> objects track the associated <code>Folder</code> objects themselves.</p>
+<p>In the following example all mutations to the <code>state</code> graph will be processed automatically.
+Some examples:</p>
+<ol>
+<li>Changing the name of a folder will update it&apos;s own <code>path</code> property and the <code>path</code> property of all its descendants.</li>
+<li>Collapsing a folder will remove all descendant <code>DisplayFolders</code> from the tree.</li>
+<li>Expanding a folder will restore them again.</li>
+<li>Setting a search filter will remove all nodes that do not match the filter, unless they have a descendant that matches the filter.</li>
+<li>Etc.</li>
+</ol>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Folder</span>(<span class="hljs-params">parent, name</span>) </span>{
+    <span class="hljs-keyword">this</span>.parent = parent;
+    m.extendObservable(<span class="hljs-keyword">this</span>, {
+        name: name,
+        children: m.asFlat([]),
+    });
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">DisplayFolder</span>(<span class="hljs-params">folder, state</span>) </span>{
+    <span class="hljs-keyword">this</span>.state = state;
+    <span class="hljs-keyword">this</span>.folder = folder;
+    m.extendObservable(<span class="hljs-keyword">this</span>, {
+        collapsed: <span class="hljs-literal">false</span>,
+        name: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.folder.name;
+        },
+        isVisible: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> !<span class="hljs-keyword">this</span>.state.filter || <span class="hljs-keyword">this</span>.name.indexOf(<span class="hljs-keyword">this</span>.state.filter) !== <span class="hljs-number">-1</span> || <span class="hljs-keyword">this</span>.children.some(child =&gt; child.isVisible);
+        },
+        children: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.collapsed)
+                <span class="hljs-keyword">return</span> [];
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.folder.children.map(transformFolder).filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">child</span>) </span>{
+                <span class="hljs-keyword">return</span> child.isVisible;
+            })
+        },
+        path: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.folder.parent === <span class="hljs-literal">null</span> ? <span class="hljs-keyword">this</span>.name : transformFolder(<span class="hljs-keyword">this</span>.folder.parent).path + <span class="hljs-string">&quot;/&quot;</span> + <span class="hljs-keyword">this</span>.name;
+        }
+    });
+}
+
+<span class="hljs-keyword">var</span> state = m.observable({
+    root: <span class="hljs-keyword">new</span> Folder(<span class="hljs-literal">null</span>, <span class="hljs-string">&quot;root&quot;</span>),
+    filter: <span class="hljs-literal">null</span>,
+    displayRoot: <span class="hljs-literal">null</span>
+});
+
+<span class="hljs-keyword">var</span> transformFolder = m.createTransformer(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">folder</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DisplayFolder(folder, state);
+});
+
+m.autorun(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    state.displayRoot = transformFolder(state.root);
+});
+</code></pre>
+<script>var _hmt = _hmt || [];(function() {var hm = document.createElement('script');hm.src = '//hm.baidu.com/hm.js?0e60686c12d4e8d648511070d598b4e8';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(hm, s);})();</script>
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="extending.html" class="navigation navigation-prev " aria-label="Previous page: Atom & Reaction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="expr.html" class="navigation navigation-next " aria-label="Next page: expr">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"createTransformer","level":"1.10.3","depth":2,"next":{"title":"expr","level":"1.10.4","depth":2,"path":"refguide/expr.md","ref":"refguide/expr.md","articles":[]},"previous":{"title":"Atom & Reaction","level":"1.10.2","depth":2,"path":"refguide/extending.md","ref":"refguide/extending.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["ba","-lunr","-search"],"pluginsConfig":{"ba":{"token":"0e60686c12d4e8d648511070d598b4e8"},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"refguide/create-transformer.md","mtime":"2017-11-22T09:46:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-22T10:43:04.489Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
