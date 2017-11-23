@@ -1,25 +1,27 @@
 {
-  "name": "ityiquan.github.com",
+  "name": "interview",
   "version": "1.0.0",
-  "description": "MobX 中文文档.",
+  "description": "aaaa",
   "main": "gulpfile.js",
+  "dependencies": {
+    "gulp-gh-pages": "^0.5.4",
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gitbook build && gulp deploy"
+    "test": "deploy"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ityiquan/ityiquan.github.com.git"
+    "url": "git+https://github.com/ityiquan/interview.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "fe"
+  ],
+  "author": "ityiquan@sina.com",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ityiquan/ityiquan.github.com/issues"
+    "url": "https://github.com/ityiquan/interview/issues"
   },
-  "homepage": "https://github.com/ityiquan/ityiquan.github.com#readme",
-  "dependencies": {
-    "gulp": "^3.9.1",
-    "gulp-gh-pages": "^0.5.4"
-  }
+  "homepage": "https://github.com/ityiquan/interview#readme"
 }
