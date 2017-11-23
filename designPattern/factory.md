@@ -1,6 +1,6 @@
 # 工厂模式
 
-`试一下试一下(debugName?, predicate: () => boolean, effect: () => void, scope?)`
+`试一下试一下大概是因为这个原，这样也行，我擦，(debugName?, predicate: () => boolean, effect: () => void, scope?)`
 
 `when` observes & runs the given `predicate` until it returns true.
 Once that happens, the given `effect` is executed and the autorunner is disposed.
