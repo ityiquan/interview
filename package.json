@@ -9,7 +9,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "deploy"
+    "test": "deploy",
+    "deploy": "gitbook build && gulp deploy"
   },
   "repository": {
     "type": "git",
