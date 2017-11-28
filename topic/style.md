@@ -1,3 +1,4 @@
+
 ### Quirks模式是什么？它和Standards模式有什么区别？
     如果写了<!document http>，就是标准模式，如果没有写，就是Quirks模式（诡异模式，怪异模式）。
     区别：总体会有布局、样式解析和脚本执行三个方面的区别。
@@ -32,12 +33,11 @@
         两个相邻的外边距都是正数时，折叠结果是它们两者之间较大的值。
         两个相邻的外边距都是负数时，折叠结果是两者绝对值的较大值。
         两个外边距一正一负时，折叠结果是两者的相加的和。
-        
+
 ### rgba()和opacity的透明效果有什么不同？
     答案：rgba()和opacity都能实现透明效果，但最大的不同是opacity作用于元素，以及元素内的所有内容的透明度，
     而rgba()只作用于元素的颜色或其背景色。（设置rgba透明的元素的子元素不会继承透明效果！）
-
-             
+    
 ###  如何垂直居中一个浮动元素？
      	方法一：已知元素的高宽（父元素需要相对定位）
      	#div1{background-color:#6699FF;width:200px;height:200px;position: absolute;top: 50%;left: 50%;margin-top:-100px ;   //二分之一的height，widthmargin-left: -100px;}
@@ -45,5 +45,5 @@
         方法二:未知元素的高宽（父元素需要相对定位）
         #div1{width: 200px; height: 200px; background-color: #6699FF;margin:auto;position: absolute;left: 0;top: 0; right: 0;bottom:0;}
 
-### 如何垂直居中一个img?（用更简便的方法。img的容器设置如下）
+### 如何垂直居中一个<img>?（用更简便的方法。<img>的容器设置如下）
     #container{display:table-cell;text-align:center;vertical-align:middle;} 

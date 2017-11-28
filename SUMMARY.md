@@ -7,10 +7,9 @@
 * 设计模式
     * [工厂模式](pattern/pattern.md)
 * 面试题
-    * [算法题](exercise/algorithm.md)    
+    * [算法题](exercise/algorithm.md)
 * 前端知识点
-    * [js](topic/js.md)    
-    * [css](topic/css.md)    
-    * [http](topic/http.md)   
-     
+    * [js](topic/js.md)
+    * [css](topic/css.md)
+    * [http](topic/http.md)
 
