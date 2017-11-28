@@ -187,6 +187,41 @@ function ready(fn){
     内置对象为gload Math 等不可以实例化的
     宿主为浏览器自带的document,window等.
     
+### 去除首尾字符并整理内部空格    
+    str = str.split(/\s+/g).join(' ').replace(/^\s+|\s+$/g,'');
     
+### 加密解密
+```
+html部分
+<body>
+<input type="text" id="tx1" />
+<input type="button" value="加密" id="btn1" />
+<input type="button" value="解密" id="btn2" />
+<input type="text" id="tx2" />
+</body>
+```
+```javascript
+window.onload = function(){
+	var oT1 = document.getElementById('tx1');
+	var oBtn1 = document.getElementById('btn1');
+	var oBtn2 = document.getElementById('btn2');
+	var oT2 = document.getElementById('tx2');
+	oBtn1.onclick = function(){
+		var str = oT1.value;
+		var str2 = '';
+		for(var i=0;i<str.length;i++){
+			str2+= String.fromCharCode(str.charCodeAt(i)+123);}
+		oT2.value = str2;};
+	oBtn2.onclick = function(){
+		var str2 = oT2.value;
+		var str = '';
+		for(var i=0;i<str2.length;i++){
+			str+= String.fromCharCode(str2.charCodeAt(i)-123);}
+		oT1.value = str;
+	};
+};
+```
+
+
 
 

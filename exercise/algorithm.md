@@ -166,22 +166,52 @@ inOrder(nums.root)
 
 ```
 
-### 编写一个方法 求一个字符串的字节长度;(假设一个中文占两个字节)
+### 判断字符串字节的长度,在utf-8模式下字母字节是1，汉字字节是3,在gb-2312模式下，字母是1，汉字是2；
+```javascript
+判断字符串字节的长度
+<script>
+'use strict';
+var str = 'afdscshdo按a';
+var n=0;
+for(var i=0;i<str.length;i++){
+	if(str.charCodeAt(i)>=0x4e00&&str.charCodeAt(i)<=0x9fa5){
+		n+=3;//在utf-8中数字的字节长度是3；
+	}else{
+		n++;}}
+alert(n);//13个
+
+```
+### 找字符串中最多的数
+```javascript
+window.onload = function(){
+	var str = 'asaddschgcndeewaaaaaaa';
+	var arr = str.split('');
+	var json = {};
+	for(var i=0;i<arr.length;i++){	
+		if(json[arr[i]]==undefined){
+			json[arr[i]] = 1;
+		}else{
+			json[arr[i]]++;}}
+	var n=0;
+	var t=0;
+	for(var name in json){
+		if(n<json[name]){
+			n=json[name];
+			t=name;}}
+	alert('最多的是'+t+',次数是'+n);
+};
+```
+
+### splice去重
 
 ```javascript
-var str = '22两是';
-alert(getStrlen(str))
-function getStrlen(str){
-    var json = {len:0};
-    var re = /[\u4e00-\u9fa5]/;
-    for (var i = 0; i < str.length; i++) {
-            if(re.test(str.charAt(i))){
-                    json['len']+=2;
-         }else{
-            json['len']++;
-         }
-    };
-    return json['len'];
-}
-
+window.onload = function(){
+	var arr = [1,2,3,4,1,3,1,4,1,1,1,2,1,2];
+	arr.sort(function(n1,n2){
+			return n1-n2;});
+	for(var i=0;i<arr.length;i++){
+		if(arr[i]==arr[i+1]){
+			arr.splice(i--,1);}}
+	document.write(arr);
+};
 ```
