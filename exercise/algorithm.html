@@ -90,7 +90,7 @@
                 <a href="../">
             
                     
-                    前端知识点
+                    interview
             
                 </a>
             
@@ -162,7 +162,7 @@
                 <a href="../pattern/pattern.html">
             
                     
-                    工厂模式
+                    设计模式
             
                 </a>
             
@@ -459,21 +459,48 @@ inOrder(nums.root)
  99
 */</span>
 </code></pre>
-<h3 id="&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;-&#x6C42;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5B57;&#x8282;&#x957F;&#x5EA6;&#x5047;&#x8BBE;&#x4E00;&#x4E2A;&#x4E2D;&#x6587;&#x5360;&#x4E24;&#x4E2A;&#x5B57;&#x8282;">&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5; &#x6C42;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5B57;&#x8282;&#x957F;&#x5EA6;;(&#x5047;&#x8BBE;&#x4E00;&#x4E2A;&#x4E2D;&#x6587;&#x5360;&#x4E24;&#x4E2A;&#x5B57;&#x8282;)</h3>
-<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&apos;22&#x4E24;&#x662F;&apos;</span>;
-alert(getStrlen(str))
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStrlen</span>(<span class="hljs-params">str</span>)</span>{
-    <span class="hljs-keyword">var</span> json = {len:<span class="hljs-number">0</span>};
-    <span class="hljs-keyword">var</span> re = <span class="hljs-regexp">/[\u4e00-\u9fa5]/</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; str.length; i++) {
-            <span class="hljs-keyword">if</span>(re.test(str.charAt(i))){
-                    json[<span class="hljs-string">&apos;len&apos;</span>]+=<span class="hljs-number">2</span>;
-         }<span class="hljs-keyword">else</span>{
-            json[<span class="hljs-string">&apos;len&apos;</span>]++;
-         }
-    };
-    <span class="hljs-keyword">return</span> json[<span class="hljs-string">&apos;len&apos;</span>];
-}
+<h3 id="&#x5224;&#x65AD;&#x5B57;&#x7B26;&#x4E32;&#x5B57;&#x8282;&#x7684;&#x957F;&#x5EA6;&#x5728;utf-8&#x6A21;&#x5F0F;&#x4E0B;&#x5B57;&#x6BCD;&#x5B57;&#x8282;&#x662F;1&#xFF0C;&#x6C49;&#x5B57;&#x5B57;&#x8282;&#x662F;3&#x5728;gb-2312&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x5B57;&#x6BCD;&#x662F;1&#xFF0C;&#x6C49;&#x5B57;&#x662F;2&#xFF1B;">&#x5224;&#x65AD;&#x5B57;&#x7B26;&#x4E32;&#x5B57;&#x8282;&#x7684;&#x957F;&#x5EA6;,&#x5728;utf-8&#x6A21;&#x5F0F;&#x4E0B;&#x5B57;&#x6BCD;&#x5B57;&#x8282;&#x662F;1&#xFF0C;&#x6C49;&#x5B57;&#x5B57;&#x8282;&#x662F;3,&#x5728;gb-2312&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x5B57;&#x6BCD;&#x662F;1&#xFF0C;&#x6C49;&#x5B57;&#x662F;2&#xFF1B;</h3>
+<pre><code class="lang-javascript">&#x5224;&#x65AD;&#x5B57;&#x7B26;&#x4E32;&#x5B57;&#x8282;&#x7684;&#x957F;&#x5EA6;
+&lt;script&gt;
+<span class="hljs-meta">&apos;use strict&apos;</span>;
+<span class="hljs-keyword">var</span> str = <span class="hljs-string">&apos;afdscshdo&#x6309;a&apos;</span>;
+<span class="hljs-keyword">var</span> n=<span class="hljs-number">0</span>;
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;str.length;i++){
+    <span class="hljs-keyword">if</span>(str.charCodeAt(i)&gt;=<span class="hljs-number">0x4e00</span>&amp;&amp;str.charCodeAt(i)&lt;=<span class="hljs-number">0x9fa5</span>){
+        n+=<span class="hljs-number">3</span>;<span class="hljs-comment">//&#x5728;utf-8&#x4E2D;&#x6570;&#x5B57;&#x7684;&#x5B57;&#x8282;&#x957F;&#x5EA6;&#x662F;3&#xFF1B;</span>
+    }<span class="hljs-keyword">else</span>{
+        n++;}}
+alert(n);<span class="hljs-comment">//13&#x4E2A;</span>
+</code></pre>
+<h3 id="&#x627E;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x6700;&#x591A;&#x7684;&#x6570;">&#x627E;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x6700;&#x591A;&#x7684;&#x6570;</h3>
+<pre><code class="lang-javascript"><span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-keyword">var</span> str = <span class="hljs-string">&apos;asaddschgcndeewaaaaaaa&apos;</span>;
+    <span class="hljs-keyword">var</span> arr = str.split(<span class="hljs-string">&apos;&apos;</span>);
+    <span class="hljs-keyword">var</span> json = {};
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;arr.length;i++){    
+        <span class="hljs-keyword">if</span>(json[arr[i]]==<span class="hljs-literal">undefined</span>){
+            json[arr[i]] = <span class="hljs-number">1</span>;
+        }<span class="hljs-keyword">else</span>{
+            json[arr[i]]++;}}
+    <span class="hljs-keyword">var</span> n=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">var</span> t=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> name <span class="hljs-keyword">in</span> json){
+        <span class="hljs-keyword">if</span>(n&lt;json[name]){
+            n=json[name];
+            t=name;}}
+    alert(<span class="hljs-string">&apos;&#x6700;&#x591A;&#x7684;&#x662F;&apos;</span>+t+<span class="hljs-string">&apos;,&#x6B21;&#x6570;&#x662F;&apos;</span>+n);
+};
+</code></pre>
+<h3 id="splice&#x53BB;&#x91CD;">splice&#x53BB;&#x91CD;</h3>
+<pre><code class="lang-javascript"><span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">4</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>];
+    arr.sort(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">n1,n2</span>)</span>{
+            <span class="hljs-keyword">return</span> n1-n2;});
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;arr.length;i++){
+        <span class="hljs-keyword">if</span>(arr[i]==arr[i+<span class="hljs-number">1</span>]){
+            arr.splice(i--,<span class="hljs-number">1</span>);}}
+    <span class="hljs-built_in">document</span>.write(arr);
+};
 </code></pre>
 
                                 
@@ -510,7 +537,7 @@ alert(getStrlen(str))
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"算法题","level":"1.4.1","depth":2,"next":{"title":"前端知识点","level":"1.5","depth":1,"ref":"","articles":[{"title":"js","level":"1.5.1","depth":2,"path":"topic/js.md","ref":"topic/js.md","articles":[]},{"title":"css","level":"1.5.2","depth":2,"path":"topic/css.md","ref":"topic/css.md","articles":[]},{"title":"http","level":"1.5.3","depth":2,"path":"topic/http.md","ref":"topic/http.md","articles":[]}]},"previous":{"title":"面试题","level":"1.4","depth":1,"ref":"","articles":[{"title":"算法题","level":"1.4.1","depth":2,"path":"exercise/algorithm.md","ref":"exercise/algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"exercise/algorithm.md","mtime":"2017-11-28T06:32:47.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-28T07:03:23.884Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"算法题","level":"1.4.1","depth":2,"next":{"title":"前端知识点","level":"1.5","depth":1,"ref":"","articles":[{"title":"js","level":"1.5.1","depth":2,"path":"topic/js.md","ref":"topic/js.md","articles":[]},{"title":"css","level":"1.5.2","depth":2,"path":"topic/css.md","ref":"topic/css.md","articles":[]},{"title":"http","level":"1.5.3","depth":2,"path":"topic/http.md","ref":"topic/http.md","articles":[]}]},"previous":{"title":"面试题","level":"1.4","depth":1,"ref":"","articles":[{"title":"算法题","level":"1.4.1","depth":2,"path":"exercise/algorithm.md","ref":"exercise/algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"exercise/algorithm.md","mtime":"2017-11-28T07:41:18.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-28T07:44:33.108Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -92,7 +92,7 @@
                 <a href="../">
             
                     
-                    前端知识点
+                    interview
             
                 </a>
             
@@ -164,7 +164,7 @@
                 <a href="../pattern/pattern.html">
             
                     
-                    工厂模式
+                    设计模式
             
                 </a>
             
@@ -461,7 +461,37 @@ alert(Number([]))    -&gt; 0
 <pre><code>&#x672C;&#x5730;&#x5BF9;&#x8C61;&#x4E3A;array obj regexp&#x7B49;&#x53EF;&#x4EE5;new&#x5B9E;&#x4F8B;&#x5316;
 &#x5185;&#x7F6E;&#x5BF9;&#x8C61;&#x4E3A;gload Math &#x7B49;&#x4E0D;&#x53EF;&#x4EE5;&#x5B9E;&#x4F8B;&#x5316;&#x7684;
 &#x5BBF;&#x4E3B;&#x4E3A;&#x6D4F;&#x89C8;&#x5668;&#x81EA;&#x5E26;&#x7684;document,window&#x7B49;.
+</code></pre><h3 id="&#x53BB;&#x9664;&#x9996;&#x5C3E;&#x5B57;&#x7B26;&#x5E76;&#x6574;&#x7406;&#x5185;&#x90E8;&#x7A7A;&#x683C;">&#x53BB;&#x9664;&#x9996;&#x5C3E;&#x5B57;&#x7B26;&#x5E76;&#x6574;&#x7406;&#x5185;&#x90E8;&#x7A7A;&#x683C;</h3>
+<pre><code>str = str.split(/\s+/g).join(&apos; &apos;).replace(/^\s+|\s+$/g,&apos;&apos;);
+</code></pre><h3 id="&#x52A0;&#x5BC6;&#x89E3;&#x5BC6;">&#x52A0;&#x5BC6;&#x89E3;&#x5BC6;</h3>
+<pre><code>html&#x90E8;&#x5206;
+&lt;body&gt;
+&lt;input type=&quot;text&quot; id=&quot;tx1&quot; /&gt;
+&lt;input type=&quot;button&quot; value=&quot;&#x52A0;&#x5BC6;&quot; id=&quot;btn1&quot; /&gt;
+&lt;input type=&quot;button&quot; value=&quot;&#x89E3;&#x5BC6;&quot; id=&quot;btn2&quot; /&gt;
+&lt;input type=&quot;text&quot; id=&quot;tx2&quot; /&gt;
+&lt;/body&gt;
+</code></pre><pre><code class="lang-javascript"><span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-keyword">var</span> oT1 = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;tx1&apos;</span>);
+    <span class="hljs-keyword">var</span> oBtn1 = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;btn1&apos;</span>);
+    <span class="hljs-keyword">var</span> oBtn2 = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;btn2&apos;</span>);
+    <span class="hljs-keyword">var</span> oT2 = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;tx2&apos;</span>);
+    oBtn1.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-keyword">var</span> str = oT1.value;
+        <span class="hljs-keyword">var</span> str2 = <span class="hljs-string">&apos;&apos;</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;str.length;i++){
+            str2+= <span class="hljs-built_in">String</span>.fromCharCode(str.charCodeAt(i)+<span class="hljs-number">123</span>);}
+        oT2.value = str2;};
+    oBtn2.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-keyword">var</span> str2 = oT2.value;
+        <span class="hljs-keyword">var</span> str = <span class="hljs-string">&apos;&apos;</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;str2.length;i++){
+            str+= <span class="hljs-built_in">String</span>.fromCharCode(str2.charCodeAt(i)<span class="hljs-number">-123</span>);}
+        oT1.value = str;
+    };
+};
 </code></pre>
+
                                 
                                 </section>
                             
@@ -500,7 +530,7 @@ alert(Number([]))    -&gt; 0
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"js","level":"1.5.1","depth":2,"next":{"title":"css","level":"1.5.2","depth":2,"path":"topic/css.md","ref":"topic/css.md","articles":[]},"previous":{"title":"前端知识点","level":"1.5","depth":1,"ref":"","articles":[{"title":"js","level":"1.5.1","depth":2,"path":"topic/js.md","ref":"topic/js.md","articles":[]},{"title":"css","level":"1.5.2","depth":2,"path":"topic/css.md","ref":"topic/css.md","articles":[]},{"title":"http","level":"1.5.3","depth":2,"path":"topic/http.md","ref":"topic/http.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"topic/js.md","mtime":"2017-11-28T06:24:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-28T07:03:23.884Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"js","level":"1.5.1","depth":2,"next":{"title":"css","level":"1.5.2","depth":2,"path":"topic/css.md","ref":"topic/css.md","articles":[]},"previous":{"title":"前端知识点","level":"1.5","depth":1,"ref":"","articles":[{"title":"js","level":"1.5.1","depth":2,"path":"topic/js.md","ref":"topic/js.md","articles":[]},{"title":"css","level":"1.5.2","depth":2,"path":"topic/css.md","ref":"topic/css.md","articles":[]},{"title":"http","level":"1.5.3","depth":2,"path":"topic/http.md","ref":"topic/http.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"topic/js.md","mtime":"2017-11-28T07:38:36.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-28T07:44:33.108Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
