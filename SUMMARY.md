@@ -5,8 +5,12 @@
     * [移动端](compatibility/mobile.md)
     * [pc端](compatibility/pc.md)
 * 设计模式
-    * [工厂模式](designPattern/factory.md)
-    
-* 前端面试题
-    * [算法题](interviewTopic/algorithm.md)    
+    * [工厂模式](pattern/pattern.md)
+* 面试题
+    * [工厂模式](design/algorithm.md)    
+* 前端知识点
+    * [js](topic/js.md)    
+    * [css](topic/css.md)    
+    * [http](topic/http.md)   
+     
 

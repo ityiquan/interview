@@ -1,6 +1,10 @@
 
 ## meta标签
 
+### Meta标签优化
+	
+	主要包括主题（Title)，网站描述(Description)，和关键词（Keywords）。还有一些其它的隐藏文字比如Author（作者），Category（目录），Language（编码语种）等。
+
 ### 1. 忽略将页面中的数字识别为电话号码
 
     <meta name="format-detection" content="telephone=no" />
