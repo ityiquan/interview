@@ -215,3 +215,13 @@ window.onload = function(){
 	document.write(arr);
 };
 ```
+
+### 数组去重
+
+```
+ES6实现：[...new Set([1,2,3,1,'a',1,'a'])]
+```
+```
+ES5实现：[1,2,3,1,'a',1,'a'].filter(function(ele,index,array){return index===array.indexOf(ele) })
+
+```
