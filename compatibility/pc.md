@@ -1,62 +1,64 @@
-# MobX 要点
 
-到目前为止这一切听起来很滑稽，但是使用MobX创建一个响应式程序只需要三步：
+## meta标签
 
-## 1. 定义你的State，并使它是可观察的
+### child问题
+ 
+    firstChild兼容 IE6-8	  firstElementChild  兼容高级浏览器
+    lastChild兼容IE6-8  	 lastElementChild  兼容高级浏览器
 
-你可以存储的任何数据类型状态，比如对象，数组，类， 即使是循环数据，引用类型也没有问题，只要你确保所有属性是被`mobx`标记可观察的即可。
+### 3. previousElementSibling||previousSibling   nextElementSibling||nextSibling(前后语句交换会有问题，因为高级浏览器会找到第一个空文本节点)
 
-```javascript
-import {observable} from 'mobx';
+### 4. 浏览器滚动距离document.body.scrollTop兼容chrome, document.documentElement.scrollTop兼容IE和firefox
+    
+### 5. pageX   pageY兼容高级浏览器  低级浏览器使用scrollLeft+clientX   scrollTop+clientY
+    
+## var oEvent = ev||event，火狐只能用传参，chrome可以用传参也可以用event,低版本IE只能用event
 
-var appState = observable({
-    timer: 0
-});
-```
+### setCapture设置捕获  releaseCapture取消捕获，只低版本的IE可用，只捕获的鼠标操作
 
-## 2. 创建响应状态变化的视图
+### 鼠标滚轮事件 IE chrome    onmousewheel 滚动方向  wheelDelta 向下<0   FF DOMMouseScroll  滚动方向  detail  向下>0
+    
+### 网页第一行不加<!doctype html>就是怪异模式，怪异模式下很多东西不一样，如盒模型等(只IE下有怪异模式)   
+    
+### 高级浏览器有冒泡+捕获，低版本IE只有冒泡，obj.setCapture();	obj.releaseCapture()
+    
+### mouseover和mouseout事件中获取元素
 
-我们并没有让观测的`appState`去做任何事，你现在就可以创建视图，当`appState`中的数据变化时这些视图会自动的更新。MobX会找一种最小变动的方法去更新你的视图。这个简单的处理会帮你节省一大堆没用的样板，并且它还是很[高效的](https://mendix.com/tech-blog/making-react-reactive-pursuit-high-performing-easily-maintainable-react-apps/)
+    分别对应chrome、IE||火狐 var oFrom = oEvent.fromElement||oEvent.relatedTarget;  var oTo = oEvent.toElement||oEvent.relatedTarget; 
+    
+### 事件委托
+    
+    分别对应chrome、IE||火狐   var oSrc = oEvent.srcElement||oEvent.target;
 
-一般来说任何function都可以成为数据观测时的响应，并且MobX可以在任何的ES5环境下运行，但是这里列举一个使用ES6的语法去写一个React组件
 
-```javascript
-import {observer} from 'mobx-react';
+### ready事件
 
-@observer
-class TimerView extends React.Component {
-    render() {
-        return (<button onClick={this.onReset.bind(this)}>
-                Seconds passed: {this.props.appState.timer}
-            </button>);
-    }
+    ready事件FF，chrome使用 DOMContentLoaded   IE6-8使用onreadystatechange（当通信状态改变时）包括两种通信状态：interactive/complete(交互/完成)
+    
+### 输入字数统计I
 
-    onReset () {
-        this.props.appState.resetTimer();
-    }
-};
+    输入字数统计IE下onpropertychange，只要当前对象属性发生改变，就会触发事件；  FF chrome  使用oninput，只在对象的value值改变时奏效；
+    
+### 事件绑定
 
-React.render(<TimerView appState={appState} />, document.body);
-```
+    作用：解决事件冲突 高级浏览器用addEventListener(sEv,fn,false);  低级浏览器用obj.attachEvent('on'+sEv,fn);
+    解除绑定，高级浏览器用removeEventListener;低级浏览器用detachevet
 
-(对于 `resetTimer` 方法的实现会在下面的章节中讲解)
+### css3标签浏览器兼容问题-webkit-transition兼容chrome,safari,opera   -moz-transition 兼容firefox   -ms-transition 兼容ie   -o-transition 兼容旧版opera  transition 最终目标不加前缀
+    
+### 获取非行间样式，高级浏览器用getComputedStyle(obj,false)[attr]，低级用obj.getCurrentStyle[attr]
+     
+### 关于ajax对象，高级浏览器用XMLHttpRequest，低级浏览器用ActiveXObject('Mircorsoft.XMLHttp')
 
-## 3. 修改状态
-
-第三步要做的事就是修改状态，其实也就是你的程序接下来要做什么。MobX不同于其他的框架，它是不会指引你如何去做这些的。经过多次的实践，非常关键的一点就是： **MobX提供一种简单直接的方法去做相应的事情**
-
-下面的代码将会每秒更改你的数据，同时UI依赖这个数据，就会自动更新。
-以下是两个改变状态的例子：
-
-```javascript
-appState.resetTimer = action(function reset() {
-    appState.timer = 0;
-});
-
-setInterval(action(function tick() {
-    appState.timer += 1;
-}), 1000);
-```
-上面例子中的`action`只在严格模式下使用（默认是无须使用的），但是它会帮助你更好的组织代码结构，并且更直白的标识修改状态的意图。
-
-尝试感受下这个列子[JSFiddle](http://jsfiddle.net/mweststrate/wgbe4guu/) or by cloning the [MobX boilerplate project](https://github.com/mobxjs/mobx-react-boilerplate)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

@@ -1,8 +1,6 @@
 
 ## meta标签
 
-
-
 ### 1. 忽略将页面中的数字识别为电话号码
 
     <meta name="format-detection" content="telephone=no" />
@@ -179,3 +177,29 @@ window.onorientationchange = function(){
     ios3.2~4.3，ios4下，魅族MX2/自带浏览器不支持position:fixed。
     解决方案1：可用isroll.js。
     解决方案2：使用userAgent检测，如果是魅族MX2自带浏览器则禁用 position:fixed，使用 position:relative 代替。
+    总结：不要在 fixed 元素中使用 input / textarea 元素。是保留之前的态度，依然不推荐在 Android下使用 iScroll。在开发项目时，
+    可以考虑分为两个版本：iOS下使用 iScroll的解决方案，Android下使用 position:fixed。
+    
+### 关于flex弹性布局
+    
+    flex下的子元素必须为块级元素，非块级元素在android2.3机器下flex失效
+    flex下的子元素宽度和高度不能超过父元素，否则会导致子元素定位错误，例如水平垂直居中
+    当你设置了一个元素为伸缩容器的时候，它只会影响他的子元素，而不会进一步的影响他的后代元素。
+    
+### video标签脱离文档流
+    
+    video标签的父元素(祖辈元素)设置transform样式后，<video>标签会脱离文档流。
+    测试环境：UC浏览器 8.7/8.6 + Android 2.3/4.0 。
+    Demo：http://t.cn/zj3xiyu
+    解决方案：不使用transform属性。translate用top、margin等属性替代。
+    
+### 移动端目前遇到的挑战
+
+    设备更新换代快——低端机遗留下问题、高端机带来新挑战
+    浏览器厂商不统一——兼容问题多
+    网络更复杂——弱网络，页面打开慢
+    低端机性能差——页面操作卡顿
+    HTML5新技术多——学习成本不低
+    未知问题——坑多
+    文档不够全面详细
+    
