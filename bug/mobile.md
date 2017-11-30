@@ -13,7 +13,7 @@
 
     说明：各个手机系统有自己的默认字体，且都不支持微软雅黑
     
-    解决方案：英文字体和数字字体可使用Helvetica,ios,android,winphone三种系统都支持body{font-family:Helvetica;}
+    解决方案：中文字体使用系统默认即可，英文字体和数字字体可使用Helvetica,ios,android,winphone三种系统都支持body{font-family:Helvetica;}
     
 ### 如何将px标注图转化为rem布局
     
@@ -51,14 +51,14 @@
     逻辑像素：软件所支持的像素
     逻辑分辨率：软件所能支持的分辨率 每个数字代表了每个逻辑像素
     CSS像素：在css文件中使用的px是一个相对单位 比如css中的1px 控制显示的是1逻辑像素 每个逻辑像素则由不同的物理像素控制
-    dpr（Device Pixel Ratio: Number of device pixels per CSS Pixel）: 设备像素比 也叫dppx 就是一个css像素控制几个物理像素
+    dpr（Device Pixel Ratio: Number of device pixels per CSS Pixel）: 设备像素比 也叫dppx 就是一个css像素控制几个物理像素，设备像素比 ＝ 物理像素 / 设备独立像素
     ppi: 像素密度 （Pixel Per Inch）单位面积含有的物理像素个数
     Math.sqrt(750750 + 13341334) / 4.7 = 326ppi
     dpi:含义相同于ppi 表示单位面积上 含有的逻辑像素个数
 
     方案1：设计稿切出来的图片长宽保证为偶数，并使用backgroud-size把图片缩小为原来的1/2
     
-    方案2：sasa中使用：
+    方案2：字号不实用rem,sass中使用：
     @mixin font-dpr($font-size){
       font-size: $font-size * 1px;
     
@@ -75,7 +75,19 @@
       }
     }
     
-    方案3：flexible的px2rem会自动处理,
+    其他使用flexible的px2rem会自动处理
+```javascript
+@function px2em($px, $base-font-size: 16px) { 
+    @if (unitless($px)) { 
+        @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you"; 
+        @return px2em($px + 0px); // That may fail. 
+    } @else if (unit($px) == em) { 
+        @return $px; 
+    } 
+    @return ($px / $base-font-size) * 1em; 
+}
+```    
+    
     div {
         width: 1rem;
         height: 0.4rem;
@@ -90,12 +102,55 @@
         font-size: 36px;
     }
     
+    方案4：在JavaScript中，可以通过window.devicePixelRatio获取到当前设备的dpr。
+    而在CSS中，可以通过-webkit-device-pixel-ratio，-webkit-min-device-pixel-ratio和 -webkit-max-device-pixel-ratio进行媒体查询，
+    对不同dpr的设备，做一些样式适配(这里只针对webkit内核的浏览器和webview)。
+    方案5：可以通过meta标签，手动设置dpr值<meta name="flexible" content="initial-dpr=2" />
+    flexible通过JS来动态改写meta标签，
+    
 ### ios系统中元素被触摸时产生的半透明灰色遮罩,部分android系统中元素被点击时产生的边框怎么去掉
     
     说明：android/ios用户点击一个链接，会出现一个边框或者半透明灰色遮罩
     
     解决方案(小米2去不了)：a,button,input,textarea{-webkit-tap-highlight-color: rgba(0,0,0,0;)}
     对于按钮类还有个办法，不使用a或者input标签，直接用div标签。
+    1.动态改写<meta>标签
+    2.给<html>元素添加data-dpr属性，并且动态改写data-dpr的值
+    3.给<html>元素添加font-size属性，并且动态改写font-size的值
+    
+```javascript
+if (!dpr && !scale) { 
+    var isAndroid = win.navigator.appVersion.match(/android/gi); 
+    var isIPhone = win.navigator.appVersion.match(/iphone/gi); 
+    var devicePixelRatio = win.devicePixelRatio; 
+    if (isIPhone) { 
+        // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案 
+        if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) { 
+            dpr = 3; 
+        } else if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)){ 
+            dpr = 2; 
+        } else { 
+            dpr = 1; 
+        } 
+    } else { 
+        // 其他设备下，仍旧使用1倍的方案 
+        dpr = 1; 
+    } 
+    scale = 1 / dpr; 
+}
+
+var metaEl = doc.createElement('meta'); 
+var scale = isRetina ? 0.5:1; 
+metaEl.setAttribute('name', 'viewport'); 
+metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no'); 
+if (docEl.firstElementChild) { 
+    document.documentElement.firstElementChild.appendChild(metaEl); 
+} else { 
+    var wrap = doc.createElement('div'); 
+    wrap.appendChild(metaEl); 
+    documen.write(wrap.innerHTML); 
+}
+```
     
 ### webkit表单元素的默认外观怎么重置    
     
@@ -311,7 +366,6 @@ function isFromWeiXin() {
  
 ### 微信浏览器里均不能打开下载的链接，需在浏览器打开
 
-### 果在网页里嵌套一个iframe，src为其他的网址等，当在微信浏览器打开时，如果irame里的页面过大，则iframe的src不能加载（具体多大不知道，只是遇到过）
+### 如果在网页里嵌套一个iframe，src为其他的网址等，当在微信浏览器打开时，如果irame里的页面过大，则iframe的src不能加载（具体多大不知道，只是遇到过）
 
-### 
-    
+###    
