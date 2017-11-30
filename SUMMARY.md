@@ -1,14 +1,18 @@
 # Summary
 
 * [interview](README.md)
-* 兼容性问题
-    * [移动端](compatibility/mobile.md)
-    * [pc端](compatibility/pc.md)
 * 编程基础
     * [设计模式](basic/design-pattern.md)
     * [函数式编程](basic/functional-programming.md)
+* 阅读笔记
+    * [javascript设计模式](book/design-pattern.md) 
+* bug&&兼容问题
+    * [移动端](bug/mobile.md)
+    * [pc端](bug/pc.md)
 * 面试题
     * [算法题](exercise/algorithm.md)
+* 前端工具
+    * [git](tools/git.md)
 * 前端知识
     * [js](topic/js.md)
     * [css](topic/css.md)
