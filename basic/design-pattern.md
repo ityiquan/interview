@@ -1,3 +1,28 @@
+
+### 单体模式
+    
+#### 解决的问题：保证一个特定的类仅有一个实例
+
+#### 实现：第一次调用，创建一个私有instance指向的对象，以后调用，返回该私有变量
+
+```javascript
+var Universe
+(function(){
+    var instance;
+    
+    Universe = function Universe(){
+        if(instance){
+            return instance;
+        }
+        
+        instance = this;
+        
+        //添加所有功能
+        this.name = Mr.Wang';
+        this.age = 18
+    }
+}))()
+```
 ### 工厂模式
 
 ##### 解决的问题：创建一些有相似功能的对象
@@ -6,7 +31,7 @@
 
 ```javascript
 // 父构造函数
-function CarMaker（）{
+function CarMaker(){
     // 父函数公共方法
     CarMaker.prototype.drive = function(){
         return "Vroom, I have '+this.doors+' doors"
@@ -23,7 +48,7 @@ function CarMaker（）{
             }
         };
         // 使用子类原型继承父类原型,改if判断表示只继承一次
-        if(typeof CarMaker[constr].prototype.dive !== 'function'){
+        if(typeof CarMaker[constr].prototype.drive !== 'function'){
             CarMaker[constr].prototype = new CarMaker();
         }
         // 创建并返回一个实例
@@ -54,7 +79,7 @@ var a = CarMaker.factory('a');
 ```javascript
 var Iterator = (function(){
     var index = 0,    // 指针
-        data = [1，2，3，4，5],   // 复杂数据结构
+        data = [1,2,3,4,5],   // 复杂数据结构
         length = data.length;
 
         return {
@@ -85,7 +110,7 @@ var Iterator = (function(){
 
 ##### 解决的问题： 可运行时动态添加附加功能到创建的子对象中。
 
-##### 实现：附加功能的可定制和可配置特性，可以从只有最基本的功能的普通对象开始，然后从可用的装饰资源池中选择需要用到的增附加功能，并按添加顺序进行装饰（如果装饰顺序很重要的话）。
+##### 实现：附加功能的可定制和可配置特性，可以从只有最基本的功能的普通对象开始，然后从可用的装饰资源池中选择需要用到的附加功能，并按添加顺序进行装饰（如果装饰顺序很重要的话）。
 
 ```javascript
 function Sale(price){
@@ -95,17 +120,17 @@ function Sale(price){
 // 可用的装饰资源池
 Sale.decorators = {};
 Sale.decorators.fedtax = {
-    getPrice = function(price){
+    getPrice:function(price){
         return price+ price*5/100;
     }
 }
 Sale.decorators.quebec = {
-    getPrice = function(price){
+    getPrice:function(price){
         return price+ price*7.5/100;
     }
 }
 Sale.decorators.money = {
-    getPrice = function(price){
+    getPrice:function(price){
         return '$' + price.toFixed(2);
     }
 }
@@ -124,7 +149,7 @@ Sale.prototype.getPrice = function(){
         price = Sale.decorators[name].getPrice(price);
     }
     return price;
-}
+ }
 
 ```
 
@@ -171,7 +196,7 @@ var validator = {
         // 重置错误提示信息
         this.messages = [];
         for( i in data){
-            id(data.hasOwnProperty(i)){
+            if(data.hasOwnProperty(i)){
                 type = this.config[i];
                 checker = this.types[type];
                 if(!type){
@@ -215,10 +240,13 @@ var myEvent = {
             e.stopPropagation();
         }
         // IE
-        if(typeof e.cancelBubble = 'boolean'){
+        if(typeof e.cancelBubble === 'boolean'){
             e.cancelBubble = true;
         }
     }
 }
 ```   
             
+### 代理模式
+
+#### 

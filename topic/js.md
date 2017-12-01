@@ -34,6 +34,50 @@ Chinese.prototype.sayAihao=function(){
 var c=new Chinese('ycy',27,'gongfu');
 c.sayAihao();
 ```
+    以上方案有缺陷，因为Person的name和age被Chinese继承了两次，一次在属性上，一次在原型上
+    更优方案是    
+```javascript
+var inherit = (function(){
+    var F = function(){};
+    return function(C,P){
+        F.prototype = P.prototype;
+        C.prototype = new F();
+        C.uber = P.prototype;
+        C.prototype.constructor = C;
+    }
+})()
+```
+### 原型继承
+
+```javascript
+function object(o){
+    function F(){};
+    F.prototype = o;
+    return new F();
+}
+
+```
+    es5中可以使用Object.create(o)代替以上代码实现
+
+### js实现bind方法
+
+```javascript
+if(typeof Function.prototype.bind === 'undefined'){
+    Function.prototype.bind = function(thisArg){
+        var fn = this,
+            slice = Array.prototype.slice,
+            args = slice.call(arguments,1);
+        
+        return function(){
+            return fn.apply(thisArg, args.concat(slice.call(arguments)))
+        }
+    }
+}
+```
+
+
+### 借用模式
+    有时候我们只需要源对象的某个方法就不需要形成父子继承关系，可用Parent.method.call(Child, param1,param2)
 
 ### 跨域问题
 
