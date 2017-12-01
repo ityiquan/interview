@@ -465,7 +465,42 @@ Chinese.prototype.sayAihao=<span class="hljs-function"><span class="hljs-keyword
 <span class="hljs-keyword">var</span> c=<span class="hljs-keyword">new</span> Chinese(<span class="hljs-string">&apos;ycy&apos;</span>,<span class="hljs-number">27</span>,<span class="hljs-string">&apos;gongfu&apos;</span>);
 c.sayAihao();
 </code></pre>
-<h3 id="&#x8DE8;&#x57DF;&#x95EE;&#x9898;">&#x8DE8;&#x57DF;&#x95EE;&#x9898;</h3>
+<pre><code>&#x4EE5;&#x4E0A;&#x65B9;&#x6848;&#x6709;&#x7F3A;&#x9677;&#xFF0C;&#x56E0;&#x4E3A;Person&#x7684;name&#x548C;age&#x88AB;Chinese&#x7EE7;&#x627F;&#x4E86;&#x4E24;&#x6B21;&#xFF0C;&#x4E00;&#x6B21;&#x5728;&#x5C5E;&#x6027;&#x4E0A;&#xFF0C;&#x4E00;&#x6B21;&#x5728;&#x539F;&#x578B;&#x4E0A;
+&#x66F4;&#x4F18;&#x65B9;&#x6848;&#x662F;    
+</code></pre><pre><code class="lang-javascript"><span class="hljs-keyword">var</span> inherit = (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-keyword">var</span> F = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{};
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">C,P</span>)</span>{
+        F.prototype = P.prototype;
+        C.prototype = <span class="hljs-keyword">new</span> F();
+        C.uber = P.prototype;
+        C.prototype.constructor = C;
+    }
+})()
+</code></pre>
+<h3 id="&#x539F;&#x578B;&#x7EE7;&#x627F;">&#x539F;&#x578B;&#x7EE7;&#x627F;</h3>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">object</span>(<span class="hljs-params">o</span>)</span>{
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">F</span>(<span class="hljs-params"></span>)</span>{};
+    F.prototype = o;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> F();
+}
+</code></pre>
+<pre><code>es5&#x4E2D;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Object.create(o)&#x4EE3;&#x66FF;&#x4EE5;&#x4E0A;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;
+</code></pre><h3 id="js&#x5B9E;&#x73B0;bind&#x65B9;&#x6CD5;">js&#x5B9E;&#x73B0;bind&#x65B9;&#x6CD5;</h3>
+<pre><code class="lang-javascript"><span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Function</span>.prototype.bind === <span class="hljs-string">&apos;undefined&apos;</span>){
+    <span class="hljs-built_in">Function</span>.prototype.bind = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">thisArg</span>)</span>{
+        <span class="hljs-keyword">var</span> fn = <span class="hljs-keyword">this</span>,
+            slice = <span class="hljs-built_in">Array</span>.prototype.slice,
+            args = slice.call(<span class="hljs-built_in">arguments</span>,<span class="hljs-number">1</span>);
+
+        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+            <span class="hljs-keyword">return</span> fn.apply(thisArg, args.concat(slice.call(<span class="hljs-built_in">arguments</span>)))
+        }
+    }
+}
+</code></pre>
+<h3 id="&#x501F;&#x7528;&#x6A21;&#x5F0F;">&#x501F;&#x7528;&#x6A21;&#x5F0F;</h3>
+<pre><code>&#x6709;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x6E90;&#x5BF9;&#x8C61;&#x7684;&#x67D0;&#x4E2A;&#x65B9;&#x6CD5;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x5F62;&#x6210;&#x7236;&#x5B50;&#x7EE7;&#x627F;&#x5173;&#x7CFB;&#xFF0C;&#x53EF;&#x7528;Parent.method.call(Child, param1,param2)
+</code></pre><h3 id="&#x8DE8;&#x57DF;&#x95EE;&#x9898;">&#x8DE8;&#x57DF;&#x95EE;&#x9898;</h3>
 <pre><code>&#x4E0D;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x57DF;&#x6216;&#x8005;&#x5B50;&#x57DF;&#x4E0B;&#x90FD;&#x8981;&#x8DE8;&#x57DF;&#xFF0C;&#x6BD4;&#x5982;&#x4F60;&#x5728; www.a.com&#x4E0B;&#x9762;&#x8981;&#x53BB;&#x8BBF;&#x95EE; www.b.com&#x6216;&#x8005;s.a.com&#x90FD;&#x8981;&#x8DE8;&#x57DF;&#x3002;
 &#x89E3;&#x51B3;&#x529E;&#x6CD5;&#xFF1A;&#x901A;&#x8FC7;js&#x6807;&#x7B7E;&#x52A0;&#x8F7D; &#x5982;&#xFF1A;
     &lt;script type=&#x201D;text/javascript&#x201D; src=&#x201D;http://act.hi.baidu.com/widget/recommend&#x201D;&gt;&lt;script&gt;
@@ -652,7 +687,7 @@ alert(Number([]))    -&gt; 0
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"js","level":"1.7.1","depth":2,"next":{"title":"css","level":"1.7.2","depth":2,"path":"topic/css.md","ref":"topic/css.md","articles":[]},"previous":{"title":"前端知识","level":"1.7","depth":1,"ref":"","articles":[{"title":"js","level":"1.7.1","depth":2,"path":"topic/js.md","ref":"topic/js.md","articles":[]},{"title":"css","level":"1.7.2","depth":2,"path":"topic/css.md","ref":"topic/css.md","articles":[]},{"title":"http","level":"1.7.3","depth":2,"path":"topic/http.md","ref":"topic/http.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"topic/js.md","mtime":"2017-11-28T07:38:36.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-30T07:39:23.757Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"js","level":"1.7.1","depth":2,"next":{"title":"css","level":"1.7.2","depth":2,"path":"topic/css.md","ref":"topic/css.md","articles":[]},"previous":{"title":"前端知识","level":"1.7","depth":1,"ref":"","articles":[{"title":"js","level":"1.7.1","depth":2,"path":"topic/js.md","ref":"topic/js.md","articles":[]},{"title":"css","level":"1.7.2","depth":2,"path":"topic/css.md","ref":"topic/css.md","articles":[]},{"title":"http","level":"1.7.3","depth":2,"path":"topic/http.md","ref":"topic/http.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"topic/js.md","mtime":"2017-11-30T08:24:41.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-01T09:18:17.810Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
