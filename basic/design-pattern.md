@@ -250,3 +250,91 @@ var myEvent = {
 ### 代理模式
 
 #### 
+
+
+### 中介者模式
+
+#### 降低对象或函数间的耦合，使各司其职
+ 
+```javascript
+//记分板
+//player对象
+function Player(name){
+    this.points = 0;
+    this.name = name;
+}
+Player.prototype.play = function(){
+    this.points += 1;
+    mediator.played();
+}
+//记分板对象
+var soreboard = {
+    // 带更新的html元素
+    element: document.getElementById('results'),
+    
+    // 更新得分显示
+    update: function(score){
+        var i,msg = '';
+        for(i in score){
+            if(score.hasOwnProperty(i)){
+                msg += '<p>'+i;
+                meg += score[i];
+                msg += '</p>'
+            }
+        }
+        this.element.innerHTML = msg;
+    }
+};
+
+// 中介者函数
+var mediator = {
+    // 所有玩家（player对象）
+    players: {},
+    
+    // 初始化
+    setup: function(){
+        var players = this.players;
+        players.home = new Player('HOME');
+        players.guest = new Player('Guest');
+        
+    },
+    
+    //如果有人玩，则更新得分值
+    played: function(){
+        var players = this.players,
+        score = {
+            Home: players.home.points,
+            Guest: players.guest.points
+        };
+        scoreboard.update(score);
+    },
+    
+    // 处理用户交互
+    keypress: function(e){
+        e = e || window.event;  // IE浏览器
+        if(e.which === 49) {  // 按键'1'
+            mediator.players.home.play();
+            return
+        }
+        if(e..which === 48) {  // 按键'0'
+            mediator.players.play();
+            return;
+        }        
+    }
+}
+
+//运行
+mediator.setup();
+window.onkeypress = mediator.keypress;
+
+// 游戏在30秒内结束
+setTimeout(function(){
+    window.onkeypress = null;
+    alert('game over');
+},30000)
+
+```
+
+### 观察者模式(订阅、发布模式)
+
+#### 促进形成松散耦合，对象a订阅对象b的特定活动并在状态改变后获得通知。发生事件时，发布者通知(调用)所有订阅者。
