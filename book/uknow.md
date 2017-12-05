@@ -58,4 +58,29 @@ obj.foo()   // 1
     因为myOBject.a得到undefined的时候，有可能是a不存在也有可能a存储的值就是undefined,
     通过 'a' in myObject 操作符来判断的话会检查属性是否在对象及其[[prototype]]原型链中，
     通过 myObject.hasOwnProperty('a')判断的话， 如果myObject是通过Object.create(null)创建的，则该对象无法通过Object.prototype来访问hasOwnproperty
-    这是可以通过Object.prototpye.hasOwnproperty.call(myObject, 'a'),来判断
+    这是可以通过Object.prototpye.hasOwnproperty.call(myObject, 'a'),来判断。
+    
+### 如果foo不直接存在于myObject中而是存在于原型链上层时，myObject.foo = 'bar',会出现三中情况
+    
+    1.如果在[[prototype]]链上层存在名为foo的普通数据访问属性并且没有被标记为只读(writable:false),
+    那就会直接在myObject中添加一个名为foo的新属性，它是屏蔽属性。
+    2.如果在[[prototype]]链上层存在foo，但是它被标记为只读(writable:false),那么无法修改已有属性或者在myObject上创建屏蔽属性，如果运行在严格模式下，代码会抛出错误，否则
+    这条赋值语句会被忽略，总之不会发生屏蔽。
+    3.如果在[[prototype]]链上层存在foo并且它是一个setter,那就一定会调用这个setter.foo不会被添加到myObject,
+    也不会重新定义foo这个setter.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
