@@ -4,6 +4,11 @@
 * 编程基础
     * [设计模式](basic/design-pattern.md)
     * [函数式编程](basic/functional-programming.md)
+    * [算法](basic/algorithm.md)
+    * [网络基础](basic/http.md)
+* 前端知识
+    * [js](topic/js.md)
+    * [css](topic/css.md)
 * 阅读笔记
     * [javascript设计模式](book/design-pattern.md) 
 * bug&&兼容问题
@@ -11,12 +16,8 @@
     * [pc端](bug/pc.md)
 * 面试题
     * [算法题](exercise/algorithm.md)
-* 前端工具
+* 工具
     * [git](tools/git.md)
-* 前端知识
-    * [js](topic/js.md)
-    * [css](topic/css.md)
-    * [http](topic/http.md)
 * 前端基础温习
     * [知识点](learn/note.md)
     * [代码](learn/code.md)

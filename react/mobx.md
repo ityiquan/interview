@@ -36,5 +36,47 @@
     
     
     
-    
-    
+## －.把 MobX 想象成 Excel 表格。
+    1. 首先，有一个 state，它可以是一个object，array，primitives等等任何组成你程序的部分。你可以把这个想象成你应用程序的“单元格”。
+    2. 然后就是 derivations，一般它是指可以从 state 中直接计算的来的结果。比如未完成的任务的数量，这个比较简单，也可以稍复杂一些比如渲染你的任务显示的html。它类似于你的应用程序中的“公式和图表”。
+    3. Reactions 和 derivations 很像，主要的区别在于 reactions 并不产生数据结果，而是自动完成一些任务，一般是和 I/O 相关的。他们保证了 DOM 和 网络请求会自动适时地出发。
+    4. 最后是 actions。Actions 指的是所有会改变 state 的事情，MobX 保证所有 actions 都会有对应的 derivations 和 reactions 相伴，保证同步。
+    5. 
+    6. @observale 修饰器或者 observable 函数让对象可以被追踪；
+    7. @computed 修饰器创造了自动运算的表达式；
+    8. autorun 函数让依靠 observable 的函数自动执行，这个用来写 log，发请求很不错；
+    9. @observer 修饰器相当于observable和autorun的合体，让 React 组建自动起来，它会自动更新，即便是在一个很大的程序里也会工作的很好；
+    10. actions: 定义模型的方法, 可以使用async/await处理异步方法, 方法返回值会转换成Promise, 其中对象提供了set方法可以快速修改多个数据，使用set只会触发一次数据变动事件, 而toJS 方法可以将数据转换成JSON格式
+    11. create-react-app 一个react脚手架
+    12.  a transaction will wait to fire until all the changes have completed.
+        1. mobx.transaction(function() {
+            1. person.firstName = 'Matt';
+            2. person.lastName = 'Ruby';
+            3. person.age = 37;
+            4. });
+    13.常用的接口
+        toJS	转成正常的对象，给第三方使用
+        transaction 多个更新，一次渲染
+        intercept	 拦截，比如a从1变到2的过程加勾子函数，改变时调用，执行一些动作
+        observe	让对象可被观察并autorun
+        isObservable	判断对象有没有被观察
+        extendObservable	 一个观察了其属性，本身未被观察的时候，增加一个可被观察的属性
+
+## 不常用
+	untracked 定义该属性不被观察
+	reaction 他的一个实现就是autorun
+	observable objects 给原始数据如（0，1，true，false等）包裹一个对象，使其可以被观察
+	git pull 拉取远端代码直接合并分支
+	如：const a ＝ observable(0); 	
+		autorun(function(){
+			console.log(a.get());
+		})
+	a.set(1);//打印0，1(0是初始化的时候打印的，1是set修改的时候打印的)
+	store就是一个对象，@observe class A{ } 定义的一个对象是自动被观测的，不再需要手动调用setState
+	
+￼
+@observer([‘AppState’])做了两件事
+	1.将数据引入组件
+	2.使组件可被观察
+	@observer(['AppState', 'BonusState’])相当于@Inject+@observable
+    ＊＊组件中还是通过props获取数据，在mobx中组件的数据有两个来源，mobx store和父组件，但获取数据的方式都是通过props
