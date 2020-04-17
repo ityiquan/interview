@@ -2,35 +2,33 @@
 
 * [interview](README.md)
 * css部分
-    * [css](css/index.md)
+    * [css](src/css/index.md)
 * JS语言部分
-    * [js](js/index.md)
+    * [js](src/js/index.md)
 * 网络基础
-    * [网络基础]](network/index.md)
+    * [网络基础]](src/network/index.md)
 * 算法基础
-    * [算法基础]](algorithm/index.md)
-    * [LeetCode经典题解]](algorithm/leetCode.md)
+    * [算法基础]](src/algorithm/index.md)
+    * [LeetCode经典题解]](src/algorithm/leetCode.md)
 * 设计模式
-    * [设计模式]]](designPattern/index.md)
+    * [设计模式]]](src/designPattern/index.md)
 * bug&&兼容问题
-    * [移动端](bug/mobile.md)
-    * [pc端](bug/pc.md)
-    * [小程序](bug/miniProgram.md)
+    * [移动端](src/bug/mobile.md)
+    * [pc端](src/bug/pc.md)
+    * [小程序](src/bug/miniProgram.md)
 * 工具
-    * [git](tools/git.md)
-    * [webpack](tools/webpack.md)
-    * [lerna](tools/lerna.md)
-    * [Rollup](tools/Rollup.md)
-    * [代码规范](tools/openSource.md)
+    * [git](src/tools/git.md)
+    * [webpack](src/tools/webpack.md)
+    * [lerna](src/tools/lerna.md)
+    * [Rollup](src/tools/Rollup.md)
+    * [代码规范](src/tools/openSource.md)
 * 框架知识
-    * [vue](frame/vue.md)
-    * [react](frame/react.md)
+    * [vue](src/fame/vue/index.md)
+    * [react](src/frame/react/index.md)
 * node
-    * [node基础](node/index.md)
+    * [node基础](src/node/index.md)
 * 编程基础
-    * [函数式](basic/functional.md)
-* 阅读笔记
-    * [javascript设计模式](book/design-pattern.md) 
+    * [函数式](src/basic/functional.md)
 
 
 * 前端基础温习
