@@ -2,13 +2,11 @@
  * @file gulpfile
  */
 
-var gulp = require('gulp');
-var ghPages = require('gulp-gh-pages');
+const gulp = require('gulp');
+const ghPages = require('gulp-gh-pages');
 
-gulp.task('deploy', function () {
-    return gulp.src('./_book/**/*')
+gulp.task('deploy', () => gulp.src('./_book/**/*')
         .pipe(ghPages())
-        .on("error", function(err){
+        .on("error", (err) => {
             console.log('err',err);
-        })
-});
+        }));
